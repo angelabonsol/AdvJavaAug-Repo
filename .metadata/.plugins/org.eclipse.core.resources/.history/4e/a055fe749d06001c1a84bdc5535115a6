@@ -1,0 +1,49 @@
+package com.cognixia.jump.bridgeCourse.classes;
+
+public class StringDemo {
+	
+	public static void main(String[] args) {
+		
+		Dog dog = new Dog(); 
+		Dog dog2 = new Dog();
+		System.out.println(dog.hashCode() + " " + dog2.hashCode());
+		System.out.println(dog == dog2);
+		System.out.println(dog + "\n" + dog2);
+		
+		//String Pool - what happens in memory 
+		String s1 = "s1";
+		
+		String s2 = "s1";
+		
+		String s3 = "s3";
+		
+		String s4 = new String("s1");
+		
+		System.out.println(s1 == s4); 
+		//will give false because although content is the same, memory is different 
+		
+		System.out.println(s1.hashCode() + " " + s4.hashCode());
+		
+		//String - object/instance methods 
+		String loopString = "We will loop through this.";
+		char[] charArray = loopString.toCharArray();
+		for(int i = 0; i < loopString.length(); i++){
+			System.out.println(charArray[i]);
+		}
+		
+		for(char c: loopString.toCharArray()) {
+			System.out.println(c);
+		}
+		
+		String substring = loopString.substring(4);
+		
+		System.out.println(substring);
+		
+		//String - class/static methods 
+		
+		
+		
+		
+	}
+
+}

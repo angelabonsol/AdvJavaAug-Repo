@@ -1,0 +1,8 @@
+package com.cognixia.jump.bridgeCourse.classes;
+
+public interface Creature {
+	
+	
+	
+
+}

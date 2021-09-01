@@ -1,0 +1,41 @@
+package com.cognixia.jump.bridgeCourse.classes;
+
+public class ArraysDemo {
+
+	public static void main(String[] args) {
+		
+		//Declare Array 
+			//primitive 
+			int[] intArray;
+			int[] intArray2 = {4, 15, 32, 64, 128};
+			//object
+			Dog[] dogArray;
+			Dog[] dogArray2 = {new Dog(), new Dog(), new Dog()};
+		
+			System.out.println(dogArray2.length);
+
+		//Initialize Array 
+			//primitive 
+			intArray = new int[5];
+			
+			//object 
+			dogArray = new Dog[5];
+		
+			
+		//Access array data 
+			//primitive 
+			intArray[4] = 4;
+			System.out.println(intArray[4]);			
+			
+			//object
+			dogArray[0] = new Dog("Lab", 70, 5, "Home");
+			
+			System.out.println(dogArray[0]);
+			
+		//iterate through array 
+		
+		
+
+	}
+
+}

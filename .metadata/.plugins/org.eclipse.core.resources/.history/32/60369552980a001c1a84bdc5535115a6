@@ -1,0 +1,14 @@
+package com.cognixia.jump.intermediateJava.streams;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ReduceStreams {
+
+	List<Employee> employees = new ArrayList<Employee>();
+	
+	
+	
+	
+	
+}

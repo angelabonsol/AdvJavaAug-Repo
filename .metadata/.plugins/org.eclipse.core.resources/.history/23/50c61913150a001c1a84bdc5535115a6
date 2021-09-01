@@ -1,0 +1,8 @@
+package com.cognixia.jump.project1;
+
+public class EmployeeAlreadyExist extends Exception{
+
+	public EmployeeAlreadyExist() {
+		System.out.println("The given ID already belongs to an existing Employee!");
+	}
+}

@@ -1,0 +1,83 @@
+package com.cognixia.jump.bridgeCourse.classes;
+
+public class ArraysDemo {
+
+	public static void main(String[] args) {
+		
+		// Declare Array 
+			//primitive 
+			int[] intArray;
+			int[] intArray2 = {4, 15, 32, 64, 128};
+			//object
+			Dog[] dogArray;
+			Dog[] dogArray2 = {new Dog(), new Dog(), new Dog()};
+		
+			System.out.println(dogArray2.length);
+
+		// Initialize Array 
+			//primitive 
+			intArray = new int[5];
+			
+			//object 
+			dogArray = new Dog[5];
+		
+			
+		// Access array data 
+			//primitive 
+			intArray[4] = 4;
+			int x = 5; 
+			intArray[1] = x;
+			
+			//object
+			dogArray[0] = new Dog("Lab", 70, 5, "Home");
+			
+			Dog dogRef = new Dog("Poodle", 10, 5, "USA");
+			
+			dogArray[1] = dogRef;
+			
+			dogArray[0] = null;
+			
+			System.out.println(dogArray[4]);
+			
+		// iterate through array 
+			//regular for loop 
+				//primitive
+			
+				//Iterating forward 
+				for(int i =0; i < intArray2.length; i++) {
+//					intArray2[i]=7; //overwrites it to 7 for all
+					System.out.println(intArray2[i]);
+
+				}
+				
+				//Iterating backwards
+//				for(int i = intArray2.length - 1; i >= 0; i--) {
+//					System.out.println(intArray2[i]);
+//				
+//				}
+				
+				//object 
+				System.out.println("\n");
+				for(int i =0; i <= dogArray.length - 1; i++) {
+					
+					System.out.println(dogArray[i]);
+
+				}
+			
+			//for each loop- enhanced for loop
+				//primitive 
+				for(int i : intArray2) {
+					
+				}
+				
+				
+				//object 
+			
+		
+		// use Array and Arrays classes 
+		
+		
+
+	}
+
+}

@@ -1,0 +1,29 @@
+package com.cognixia.jump.corejava.exceptions;
+
+public class LicenseRegistration {
+	
+	public static void main(String[] args) {
+		
+		
+		try {
+			
+			// int age = HELPER-METHOD-CALL 
+			
+			
+		} catch(LicenseAgeException e) {
+			
+			
+			
+		}
+		
+		
+	}
+	
+	public static int getAge() throws LicenseAgeException{
+		System.out.println("Welcome to the Bureau of Motor Vehicles!! It appears you are wishing to register for the Driver License");
+	}
+
+	
+	
+	
+}

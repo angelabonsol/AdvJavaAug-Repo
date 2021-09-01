@@ -1,0 +1,34 @@
+package com.cognixia.jump.intermediateJava.files;
+
+import java.io.File;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+
+public class WriteFile {
+
+	public static void main(String[] args) {
+		File file = null;
+		FileWriter fileWriter = null;
+		BufferedWriter buffWriter = null;
+		PrintWriter printWriter = null;
+		
+		
+		try {
+			
+			
+			file = new File("resources/hello.txt");
+			fileWriter = new FileWriter(file);
+			buffWriter = new BufferedWriter(fileWriter);
+			printWriter = new PrintWriter(buffWriter);
+			
+		} catch(IOException e) {
+			System.out.println("EXCEPTION: 'IOEXCEPTION caught :( ");
+			e.printStackTrace();
+		}
+
+	}
+
+}

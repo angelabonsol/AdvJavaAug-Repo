@@ -1,0 +1,12 @@
+package com.cognixia.jump.project1;
+
+public class Operations extends Employee {
+
+	public Operations(int id, String firstName, String lastName, String email, String position) {
+		super(id, firstName, lastName, email, position);
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+
+}

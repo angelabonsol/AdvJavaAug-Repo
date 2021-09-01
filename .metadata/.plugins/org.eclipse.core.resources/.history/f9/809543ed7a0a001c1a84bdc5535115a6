@@ -1,0 +1,10 @@
+package com.cognixia.jump.intermediateJava.functionalInterface;
+
+@FunctionalInterface 
+interface Calculation{
+	float calculate(int x, int y);
+}
+
+public class Calculator {
+
+}

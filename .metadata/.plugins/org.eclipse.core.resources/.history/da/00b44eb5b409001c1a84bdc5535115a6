@@ -1,0 +1,15 @@
+package com.cognixia.jump.project1;
+
+public class Technology extends Employee{
+
+	public Technology(int id, String firstName, String lastName, String email, String position) {
+		super(id, firstName, lastName, email, position);
+
+	}
+	
+	@Override
+	public  int void etSalary() {
+		
+	}
+
+}

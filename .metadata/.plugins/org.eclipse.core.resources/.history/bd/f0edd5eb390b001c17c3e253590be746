@@ -1,0 +1,293 @@
+package com.cognixia.jump.project1;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.List;
+import java.util.Scanner;
+import java.util.stream.Collectors;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+
+
+public class EmployeeRunner {
+	static Scanner scanner = new Scanner(System.in);
+	static boolean continuous = true;
+	static int id;
+	static List<Employee> employees;
+
+	public static void main(String[] args) throws IOException,IDDoesExistException, IDDoesNotExistException {
+
+		
+		File file = new File("resources/employees.txt");
+		
+		employees = new ArrayList<Employee>(readTxt(file));
+
+		System.out.println("Welcome! You are now accessing Drop Inc. employee files.\n");
+
+		while (continuous== true) {
+			showMenu(file);
+
+		}
+
+	}
+
+	private static List<Employee> readTxt(File file) {
+		List<Employee> eList = new ArrayList<Employee>();
+
+//		File file = null;
+		FileReader fileReader = null; 
+		BufferedReader reader = null;
+
+		try {
+			fileReader = new FileReader(file);
+			reader = new BufferedReader(reader);
+
+			String line; 
+
+			while((line = reader.readLine()) != null) {
+				String [] tokens = line.split(" ");
+				Employee emp = new Employee(Integer.parseInt(tokens[0]), tokens[1], tokens[2], tokens[3], tokens[4]);
+
+				eList.add(emp);
+			}
+
+		} catch(FileNotFoundException e){
+			System.out.println("This file does not exist!");
+		} catch(NullPointerException e){
+			e.printStackTrace();
+		} catch(IOException e) {
+			System.out.println("Could not read character!");
+		} finally {
+			try {
+				fileReader.close();
+				reader.close();
+			} catch(IOException e) {
+				System.out.println("Could not close reader objects!");
+			}
+		}
+
+		return eList;
+
+	}
+
+	private static void showMenu(File file) throws IOException, IDDoesExistException, IDDoesNotExistException{
+
+		try {
+			System.out.println("Please select what you would like to do today: \n"
+					+ "1: Show full employee list \n"
+					+ "2: Show Employee information \n"
+					+ "3: Add an employee \n"
+					+ "4: Delete an employee \n"
+					+ "5: Exit \n");
+			int option = scanner.nextInt();
+
+			switch(option) {
+			case 1: 
+				showEmployeeList(file);
+				break;
+
+			case 2: 
+				System.out.println("What is the ID of the employee you want to view: ");
+				id = scanner.nextInt();
+				showEmployee(id);
+				break;
+
+			case 3:
+				System.out.println("What is the ID of the employee you want to add: ");
+				id = scanner.nextInt();
+				addEmployee(id);
+				break;
+
+			case 4:
+				System.out.println("What is the ID of the employee you want to delete: ");
+				id = scanner.nextInt();
+				deleteEmployee(id);
+				break;
+
+			case 5:
+				exit();
+				break;
+
+			default: 
+				break;
+
+			}			
+		} catch (InputMismatchException e) {
+			System.out.println("Please enter a valid menu option 1-5 only! ");
+			scanner.next();
+		} 
+
+	}
+
+	private static boolean IDExistence(int id) {
+		List<Employee> findID = null;
+
+		try {
+			findID = employees.stream()
+					.filter(n -> (n.getId() == id))
+					.collect(Collectors.toList());
+
+			if(findID != null) {
+				return true;
+
+			} else {
+				throw new IDDoesNotExistException();
+			}
+
+		} catch (IDDoesNotExistException e) { 
+			return false;
+		}
+
+	}
+
+	private static void showEmployeeList(File file) {
+		//Use Streams here 
+//		employees.stream().forEach(System.out::println);
+//		employees.toString();
+		readTxt(file).toString();
+
+	}
+
+	private static void showEmployee(int id) throws IDDoesNotExistException{
+		if(IDExistence(id) == true) {
+			
+					
+		}
+		else {
+			throw new IDDoesNotExistException();
+		}
+
+	}
+
+	private static void addEmployee(int id) throws IOException, IDDoesExistException{
+		String yn;
+		boolean repeat = true;
+		Employee emp = new Employee(id);
+		
+		File file = null;
+		FileWriter fileWriter = null;
+		BufferedWriter buffWriter = null;
+		
+		try {
+			file = new File("resources/employees.txt");
+			fileWriter = new FileWriter(file);
+			buffWriter = new BufferedWriter(fileWriter);
+			
+			if(IDExistence(id) == true) {
+				throw new IDDoesExistException();
+			}
+			else {
+				while(repeat == true) {
+					System.out.println("You are adding an Employee to Departmnent: " + emp.getDepartment().toString() 
+							+ ", Correct? [y/n]");
+					yn = scanner.next();
+
+					if (yn.equals("y")){
+						repeat = false;					
+					}
+					else if (yn.equals("n")) {
+						repeat = false;
+						System.out.println("Enter a new ID:");
+						id = scanner.nextInt();
+						emp = new Employee(id);
+						repeat = true;
+
+					}
+					else {
+						throw new InputMismatchException();
+					}
+				}
+
+				System.out.println("Enter NEW Employee First Name: ");
+				String fName = scanner.next();
+				emp.setFirstName(fName);
+
+				System.out.println("Enter NEW Employee Last Name: ");
+				String lName = scanner.next();
+				emp.setLastName(lName);
+
+				System.out.println("Enter NEW Employee Email: ");
+				String email = scanner.next();
+				emp.setEmail(email);
+
+				System.out.println("Enter NEW Employee Position(No spaces): ");
+				String position = scanner.next();
+				emp.setPosition(position);
+
+				employees.add(emp);
+				buffWriter.append(emp.fileFormat());
+
+			} 
+
+		} catch(InputMismatchException e){
+			System.out.println("Please enter y or n only! ");
+		} catch (IOException e) {
+			System.out.println("File Does Not Exist!");
+		} finally {
+			if (buffWriter != null) {
+				try {
+					buffWriter.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			
+			if (fileWriter != null) {
+				try {
+					fileWriter.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+	}
+
+	private static void deleteEmployee(int id) throws IDDoesNotExistException{
+		
+		if(IDExistence(id) == true) {
+			
+			
+			
+		}
+		else {
+			throw new IDDoesNotExistException();
+		}
+
+	}
+
+	private static void exit() throws IOException, IDDoesExistException, IDDoesNotExistException{
+		String yn;
+		boolean repeat = true;
+		while(repeat == true) {
+			try {
+				System.out.println("Are you sure you would like to exit? [y/n]");		
+				yn = scanner.next();
+				if (yn.equals("y")){
+					continuous = false;
+					repeat = false;
+					System.out.println("Program Closed.");
+					break;
+				}
+				else if (yn.equals("n")) {
+					continuous = true;
+					showMenu(); //double check this, you want it to loop back 
+				}
+				else {
+					throw new InputMismatchException();
+				}
+
+			} catch(InputMismatchException e) {
+				System.out.println("Please enter y or n only! ");
+			}  
+		}
+
+	}
+
+}

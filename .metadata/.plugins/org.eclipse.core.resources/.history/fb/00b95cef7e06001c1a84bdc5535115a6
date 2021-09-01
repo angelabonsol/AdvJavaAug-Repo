@@ -1,0 +1,12 @@
+package com.cognixia.jump.intermediateJava.files;
+
+public class ReadFile {
+
+	public static void main(String[] args) {
+		
+		File file = new File("resources/tea.txt");
+		
+	}
+	
+	
+}

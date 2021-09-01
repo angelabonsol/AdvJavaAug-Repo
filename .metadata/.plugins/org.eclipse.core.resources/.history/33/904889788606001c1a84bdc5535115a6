@@ -1,0 +1,11 @@
+package com.cognixia.jump.intermediateJava.files;
+
+public class WriteFile {
+
+	public static void main(String[] args) {
+		
+		
+
+	}
+
+}

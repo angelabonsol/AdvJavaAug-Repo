@@ -1,0 +1,15 @@
+package com.cognixia.jump.intermediateJava.files;
+
+import java.io.File;
+
+public class ObjectStreams {
+
+	public static void main(String[] args) {
+
+		File file = new File("resources/objectFile.data");
+		
+		
+		
+	}
+
+}

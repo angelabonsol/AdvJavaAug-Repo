@@ -1,0 +1,11 @@
+package com.cognixia.jump.bridgeCourse.classes;
+
+public interface Creature extends Basic {
+	
+	int NUMBER = 4; 
+	
+	int move(int x); 
+	
+	void eat();
+
+}

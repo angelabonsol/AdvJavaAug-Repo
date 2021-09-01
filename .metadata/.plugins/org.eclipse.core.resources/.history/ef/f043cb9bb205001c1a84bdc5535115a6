@@ -1,0 +1,23 @@
+package com.cognixia.jump.corejava.exceptions;
+
+public class LicenseRegistration {
+	
+	public static void main(String[] args) {
+		try {
+			
+
+		} catch(LicenseAgeException e) {
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+
+}

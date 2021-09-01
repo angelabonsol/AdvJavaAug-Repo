@@ -1,0 +1,7 @@
+package com.cognixia.jump.intermediateJava.streams;
+
+public class ReduceStreams {
+
+	List<Employee> employees = new ArrayList<Employee>();
+	
+}
